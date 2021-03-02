@@ -18,6 +18,9 @@ const getFileContent = (callback) => {
 http.createServer((req, res) => {
     //Analizar la url sobre la cual se hacen peticiones
     console.log(req.url);
+    /*
+        Si la URL termina en "/api/proveedores"
+    */
     if(req.url==="/api/proveedores") {
         console.log("prov");
         getFileContent((data) => {
@@ -51,12 +54,13 @@ http.createServer((req, res) => {
                 .catch(function (error) {
                     // handle error
                     console.log(error);
-                })
-                .then(function () {
-                    // always executed
                 });
         });
-    } else if(req.url==="/api/clientes") {
+    }
+    /*
+        Si la URL termina en "/api/clientes"
+    */
+    else if(req.url==="/api/clientes") {
         console.log("cli");
         getFileContent((data) => {
             axios.get(CLIENTES)
@@ -89,9 +93,6 @@ http.createServer((req, res) => {
                 .catch(function (error) {
                     // handle error
                     console.log(error);
-                })
-                .then(function () {
-                    // always executed
                 });
         });
     }
